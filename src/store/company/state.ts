@@ -1,10 +1,4 @@
-export interface Company {
-  id: number;
-  name: string;
-  employees: number;
-  address: string;
-  selected: boolean;
-}
+import { Company } from "@shared/models/company";
 
 interface CompanyState {
   companies: Company[];
@@ -15,3 +9,5 @@ export const initialState: CompanyState = {
   companies: [],
   selectedCompany: null,
 };
+
+

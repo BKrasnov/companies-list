@@ -15,8 +15,8 @@ export const MainPage: React.FC = () => {
 
   return (
     <div>
-        <CompanyList />
-        <EmployeeList />
+      <CompanyList />
+      <EmployeeList />
     </div>
   );
 };

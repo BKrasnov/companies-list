@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Company, initialState } from './state';
+import { initialState } from './state';
+import { Company } from '@shared/models/company';
 
 export const companySlice = createSlice({
   name: 'companies',

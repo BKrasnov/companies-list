@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
-import { MainPage } from './pages/MainPage';
-import { store } from './store';
+import { MainPage } from '@pages/MainPage';
+import { store } from '@store';
 
 const App = () => {
   return (
