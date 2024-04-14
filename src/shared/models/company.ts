@@ -1,7 +1,6 @@
-export interface Company {
+export type Company = {
   id: number;
   name: string;
-  employees: number;
+  employeeIds: string[];
   address: string;
-  selected: boolean;
 }

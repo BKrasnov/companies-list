@@ -1,30 +1,45 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './state';
-import { Company } from '@shared/models/company';
+import { fetchedCompanies } from './dispatchers';
 
 export const companySlice = createSlice({
   name: 'companies',
   initialState,
   reducers: {
-    setCompanies: (state, action: PayloadAction<Company[]>) => {
-      state.companies = action.payload;
-    },
-    selectCompany: (state, action: PayloadAction<number>) => {
-      state.selectedCompany = state.companies.find(company => company.id === action.payload) || null;
-    },
     toggleCompanySelection: (state, action: PayloadAction<number>) => {
       const company = state.companies.find(company => company.id === action.payload);
       if (company) {
         company.selected = !company.selected;
       }
+      state.selectedCompany = company;
     },
     toggleAllCompanies: (state) => {
       const allSelected = state.companies.every(company => company.selected);
-      state.companies.forEach(company => {
-        company.selected = !allSelected;
-      });
+      state.companies = state.companies.map(company => ({
+        ...company,
+        selected: !allSelected,
+      }));
     },
   },
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchedCompanies.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(fetchedCompanies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.companies = action.payload.map(company => ({
+          ...company,
+          selected: false,
+        }));
+      })
+      .addCase(fetchedCompanies.rejected, (state, action) => {
+        if (action.error.message) {
+          state.error = action.error.message;
+        }
+        state.isLoading = false;
+      })
 });
 
 export const { reducer: companyReducer, actions: companyActions } = companySlice;

@@ -1,13 +1,19 @@
 import { Company } from "@shared/models/company";
 
+export type CompanyWithSelection = Company & {
+  selected: boolean;
+}
+
 interface CompanyState {
-  companies: Company[];
-  selectedCompany: Company | null;
+  companies: CompanyWithSelection[];
+  selectedCompany?: CompanyWithSelection;
+  isLoading: boolean;
+  error?: string;
 }
 
 export const initialState: CompanyState = {
   companies: [],
-  selectedCompany: null,
+  isLoading: false,
 };
 
 
