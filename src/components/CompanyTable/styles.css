@@ -24,11 +24,3 @@
 .company-row.selected {
   background-color: lightblue;
 }
-
-.company-table input[type='checkbox'] {
-  margin-right: 5px;
-}
-
-.company-table input[type='checkbox']:first-of-type {
-  margin-right: 10px;
-}

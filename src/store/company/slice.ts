@@ -1,19 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './state';
 import { fetchedCompanies } from './dispatchers';
+import { Company } from '@shared/models/company';
 
 export const companySlice = createSlice({
   name: 'companies',
   initialState,
   reducers: {
-    toggleCompanySelection: (state, action: PayloadAction<number>) => {
+    selectCompanySelection: (state, action: PayloadAction<Company["id"]>) => {
       const company = state.companies.find(company => company.id === action.payload);
       if (company) {
         company.selected = !company.selected;
       }
       state.selectedCompany = company;
     },
-    toggleAllCompanies: (state) => {
+    selectAllCompanies: (state) => {
       const allSelected = state.companies.every(company => company.selected);
       state.companies = state.companies.map(company => ({
         ...company,

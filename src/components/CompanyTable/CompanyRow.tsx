@@ -16,7 +16,7 @@ export const CompanyRow: React.FC<CompanyRowProps> = ({ company }) => {
         <input
           type="checkbox"
           checked={company.selected}
-          onChange={() => dispatch(companyActions.toggleCompanySelection(company.id))}
+          onChange={() => dispatch(companyActions.selectCompanySelection(company.id))}
         />
       </td>
       <td>{company.name}</td>

@@ -2,6 +2,7 @@ import { CompanyMapper } from "@shared/mappers/company";
 import { Company } from "@shared/models/company";
 
 export class CompanyService {
+  
   /** Извлечь компании. */
   static async fetchCompanies(): Promise<Company[]> {
     const response = await fetch('/mock/company.json');

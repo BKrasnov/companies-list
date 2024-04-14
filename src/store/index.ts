@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import companySlice from './company/slice';
+import employeeSlice from './employee/slice';
 
 export const store = configureStore({
   reducer: {
     companies: companySlice.reducer,
+    employees: employeeSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
